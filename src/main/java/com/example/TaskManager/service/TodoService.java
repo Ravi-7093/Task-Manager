@@ -38,7 +38,9 @@ public class TodoService implements ITodoService {
 
     @Override
     public void deleteTodo(long id) {
-        Optional < Todo > todo = todoRepository.findById(id);
+        Optional < Todo > todo = todoRepository.findById(id); //Optional is a container class introduced in Java 8 to represent an optional value that may or may not be present. It helps avoid null pointer exceptions when working with potentially absent values.
+
+        todoRepository.findById(id);// is a method call that is expected to return an Optional<Todo>. It means that it may return an instance of Todo if a todo with the specified id is found, or it may return an empty Optional if no such todo exists.
         if (todo.isPresent()) {
             todoRepository.delete(todo.get());
         }
